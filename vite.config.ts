@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers';
+import AutoImport from 'unplugin-auto-import/vite';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,7 +24,7 @@ export default defineConfig({
       // generate `components.d.ts` global declarations,
       // also accepts a path for custom filename
       // default: `true` if package typescript is installed
-      dts: false,
+      dts: true,
   
       // Allow subdirectories as namespace prefix for components.
       directoryAsNamespace: false,
@@ -45,6 +47,24 @@ export default defineConfig({
       // filters for transforming targets
       include: [/\.vue$/, /\.vue\?vue/],
       exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
-    })
-  ]
+    }),
+    AutoImport({
+      include: [
+          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+          /\.vue\??/, // .vue
+      ],
+      imports: [
+          'vue',
+          'vue-router',
+          {
+              'ant-design-vue': ['message'],
+          },
+      ],
+      dts: true,
+    }),
+  ],
+  resolve: {
+    alias: { '@': resolve(__dirname, './src') },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.scss'],
+  },
 })

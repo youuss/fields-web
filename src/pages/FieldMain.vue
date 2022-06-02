@@ -13,7 +13,7 @@
         </a-form-item>
       </a-form>
       <a-list
-          item-layout="horizontal"
+          itemLayout="horizontal"
           :data-source="dataList"
       >
         <template #renderItem="{ item }">
@@ -40,10 +40,8 @@
  * Hello, humor
  */
 
-import { defineComponent, ref } from 'vue';
-
 export default defineComponent({
-  name: 'Main',
+  name: 'FieldMain',
   setup() {
     const dataList = ref([
       { param: 'id', title: '编号' },

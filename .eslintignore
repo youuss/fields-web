@@ -1,0 +1,4 @@
+vite.config.ts
+tsconfig.json
+lint-staged.config.js
+components.d.ts

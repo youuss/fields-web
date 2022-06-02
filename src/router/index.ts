@@ -15,7 +15,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'Main',
-      component: () => import(/* webpackChunkName: "main" */ '../pages/Main.vue'),
+      component: () => import(/* webpackChunkName: "main" */ '@/pages/FieldMain.vue'),
     },
   ],
 });

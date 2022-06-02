@@ -6,12 +6,15 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
+    ADescriptions: typeof import('ant-design-vue/es')['Descriptions']
+    ADivider: typeof import('ant-design-vue/es')['Divider']
     ADrawer: typeof import('ant-design-vue/es')['Drawer']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
     AList: typeof import('ant-design-vue/es')['List']
     AListItem: typeof import('ant-design-vue/es')['ListItem']
+    ASwitch: typeof import('ant-design-vue/es')['Switch']
     FieldDrawer: typeof import('./src/components/FieldDrawer.vue')['default']
     Preview: typeof import('./src/components/Preview.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
