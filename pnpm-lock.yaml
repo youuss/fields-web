@@ -23,6 +23,7 @@ specifiers:
   vue: ^3.2.25
   vue-router: '4'
   vue-tsc: ^0.34.7
+  vuedraggable: ^4.1.0
 
 dependencies:
   ant-design-vue: registry.npmmirror.com/ant-design-vue/3.2.5_vue@3.2.36
@@ -49,6 +50,7 @@ devDependencies:
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.19.6_vite@2.9.9+vue@3.2.36
   vite: registry.npmmirror.com/vite/2.9.9_sass@1.52.1
   vue-tsc: registry.npmmirror.com/vue-tsc/0.34.17_typescript@4.7.2
+  vuedraggable: 4.1.0_vue@3.2.36
 
 packages:
 
@@ -1428,6 +1430,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /sortablejs/1.14.0:
+    resolution: {integrity: sha1-bS4XzL2yX0ZHNN9iHU811Ks1s9g=, tarball: sortablejs/download/sortablejs-1.14.0.tgz}
+    dev: true
+
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=, tarball: sourcemap-codec/download/sourcemap-codec-1.4.8.tgz}
     dev: true
@@ -1605,6 +1611,15 @@ packages:
       semver: 7.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /vuedraggable/4.1.0_vue@3.2.36:
+    resolution: {integrity: sha1-7ezmituKTZ4GrM/538kEDmaFInA=, tarball: vuedraggable/download/vuedraggable-4.1.0.tgz}
+    peerDependencies:
+      vue: ^3.0.1
+    dependencies:
+      sortablejs: 1.14.0
+      vue: registry.npmmirror.com/vue/3.2.36
     dev: true
 
   /webpack-sources/3.2.3:

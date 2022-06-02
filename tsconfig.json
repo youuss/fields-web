@@ -34,10 +34,10 @@
       "src/**/*.d.ts",
       "src/**/*.tsx",
       "src/**/*.vue",
-      "src/views/gridConfig/GridConfig.vue",
       "*.ts"
   ],
   "exclude": [
-      "node_modules"
+      "node_modules",
+      "vite.config.ts"
   ]
 }

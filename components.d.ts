@@ -15,8 +15,11 @@ declare module '@vue/runtime-core' {
     AList: typeof import('ant-design-vue/es')['List']
     AListItem: typeof import('ant-design-vue/es')['ListItem']
     ASwitch: typeof import('ant-design-vue/es')['Switch']
+    ATable: typeof import('ant-design-vue/es')['Table']
+    ATableColumn: typeof import('ant-design-vue/es')['TableColumn']
+    DragTable: typeof import('./src/components/DragTable.vue')['default']
     FieldDrawer: typeof import('./src/components/FieldDrawer.vue')['default']
-    Preview: typeof import('./src/components/Preview.vue')['default']
+    FieldsPreview: typeof import('./src/components/FieldsPreview.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

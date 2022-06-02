@@ -1,16 +1,17 @@
 <template>
   <div class="fields-container">
     <div class="field-list">
-      <a-form>
+      <a-form
+        :labelCol="{ span: 6 }"
+        :wrapperCol="{ span: 16 }"
+      >
         <a-form-item name="param" label="param">
           <a-input />
         </a-form-item>
         <a-form-item name="title" label="title">
           <a-input />
         </a-form-item>
-        <a-form-item>
-          <a-button block type="primary">添加</a-button>
-        </a-form-item>
+        <a-button block type="primary">添加</a-button>
       </a-form>
       <a-list
           itemLayout="horizontal"
@@ -25,6 +26,9 @@
           </a-list-item>
         </template>
       </a-list>
+    </div>
+    <div class='fields-preview'>
+      <FieldsPreview />
     </div>
     <FieldDrawer v-model:visible="visible" :param="param" :title="title"/>
   </div>
@@ -76,11 +80,21 @@ export default defineComponent({
   width: 100vw;
   padding: 10px;
   background: #f5f5f5;
+  display: grid;
+  grid-template-columns: 250px calc(100vw - 280px);
+  grid-column-gap: 10px;
+
   .field-list {
-    width: 250px;
+    width: 100%;
     background: #fff;
     height: 100%;
     padding: 20px;
+  }
+
+  .fields-preview {
+    padding: 10px;
+    background: #fff;
+    width: 100%;
   }
 }
 </style>
