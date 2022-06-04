@@ -2,73 +2,107 @@
   <div class="fields-container">
     <div class="field-list">
       <a-form
-        :labelCol="{ span: 6 }"
+        :labelCol="{ span: 8 }"
         :wrapperCol="{ span: 16 }"
       >
-        <a-form-item name="param" label="param">
-          <a-input />
+        <a-form-item
+            label="param"
+            v-bind="validateInfos.param"
+        >
+          <a-input v-model:value="form.param" />
         </a-form-item>
-        <a-form-item name="title" label="title">
-          <a-input />
+        <a-form-item
+            label="title"
+            v-bind="validateInfos.title"
+        >
+          <a-input v-model:value="form.title" />
         </a-form-item>
-        <a-button block type="primary">添加</a-button>
+        <a-button block type="primary" @click="onSubmit">添加</a-button>
       </a-form>
-      <a-list
-          itemLayout="horizontal"
-          :data-source="dataList"
-      >
-        <template #renderItem="{ item }">
-          <a-list-item>
-            {{item.param}}-{{item.title}}
-            <template #actions>
-              <a @click="toModify(item)">edit</a>
-            </template>
-          </a-list-item>
-        </template>
-      </a-list>
+      <FieldList />
     </div>
     <div class='fields-preview'>
-      <FieldsPreview />
+      <FieldsContainer />
     </div>
-    <FieldDrawer v-model:visible="visible" :param="param" :title="title"/>
   </div>
 </template>
 
 <script lang="ts">
 /**
- * @Description
+ * @Description filed主页
  * @Author youus
  * @Date 21:46
  * @Version v1.0.0
  *
  * Hello, humor
  */
+import { useFieldsStore } from '@/store/fields';
+import { Form, FormProps } from 'ant-design-vue'
+import { Rule } from 'ant-design-vue/es/form';
 
+interface StateProps {
+  form: {
+    param?: string;
+    title?: string;
+  },
+  rules?: FormProps['rules'];
+}
+
+const { useForm } = Form
 export default defineComponent({
   name: 'FieldMain',
   setup() {
-    const dataList = ref([
-      { param: 'id', title: '编号' },
-      { param: 'name', title: '名称' }
-    ])
+    const fieldsStore = useFieldsStore();
 
-    const visible = ref(false)
-    const param = ref('')
-    const title = ref('')
-
-    const toModify = (record: any) => {
-      console.log(record)
-      param.value = record.param
-      title.value = record.title
-      visible.value = true
+    const validateParam = (_rule: Rule, value: string) => {
+      const field = fieldsStore.fields.find((field) => field.param === value)
+      if (field) {
+        return Promise.reject('请勿添加相同字段');
+      }
+      if (!value) {
+        return Promise.reject('请输入字段');
+      } else if (!/^[^\u4e00-\u9fa5]*$/.test(value)) {
+        return Promise.reject('请输入英文字符');
+      } else {
+        return Promise.resolve();
+      }
     }
 
+    const state = reactive<StateProps>({
+      form: {
+        param: undefined,
+        title: undefined,
+      },
+      rules: {
+        title: [
+          {
+            required: true,
+            message: '请输入字段名称',
+          }
+        ],
+        param: [
+          {
+            required: true,
+            validator: validateParam,
+          }
+        ]
+      }
+    });
+
+    const { validate, validateInfos, resetFields } = useForm(state.form, state.rules);
+
+    const onSubmit = () => {
+      validate().then(() => {
+        fieldsStore.addFiled({
+          ...state.form
+        })
+        resetFields()
+      }).catch((e) => console.log(e))
+    }
     return {
-      dataList,
-      toModify,
-      visible,
-      param,
-      title
+      ...toRefs(state),
+      onSubmit,
+      validateInfos
     }
   }
 })
@@ -92,9 +126,9 @@ export default defineComponent({
   }
 
   .fields-preview {
-    padding: 10px;
     background: #fff;
     width: 100%;
+    overflow: hidden;
   }
 }
 </style>

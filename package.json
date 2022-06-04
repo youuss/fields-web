@@ -8,12 +8,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons-vue": "^6.1.0",
+    "@codemirror/lang-javascript": "^0.20.1",
+    "@codemirror/lang-json": "^0.20.0",
+    "@codemirror/theme-one-dark": "^0.20.0",
+    "add": "^2.0.6",
     "ant-design-vue": "^3.2.5",
+    "pinia": "^2.0.14",
     "vue": "^3.2.25",
+    "vue-codemirror": "^5.0.1",
     "vue-router": "4",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
+    "@types/node": "^17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "@vitejs/plugin-vue": "^2.3.3",

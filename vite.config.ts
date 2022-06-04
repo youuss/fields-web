@@ -11,7 +11,7 @@ export default defineConfig({
     vue(),
     Components({
       resolvers: [
-        AntDesignVueResolver(),
+        AntDesignVueResolver({ resolveIcons: true }),
       ],
       // relative paths to the directory to search for components.
       dirs: ['src/components'],
@@ -56,6 +56,7 @@ export default defineConfig({
       imports: [
         'vue',
         'vue-router',
+        'pinia',
         {
           'ant-design-vue': ['message'],
         },
