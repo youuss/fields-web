@@ -5,7 +5,7 @@
       item-key="param"
   >
     <template #item="{element}">
-      <li class="field">
+      <li class="field" :class="{'active': currentField && currentField.param === element.param }" @click="toActive(element)">
         <span class="drag-icon">
           <HolderOutlined />
         </span>
@@ -35,21 +35,34 @@ export default defineComponent({
   name: 'FieldList',
   components: { Draggable },
   setup() {
-    const fieldStore = useFieldsStore()
+    const fieldStore = useFieldsStore();
 
-    const currentField = ref<Field>({})
+    const currentField = ref<Field>();
 
-    const visible = ref(false)
+    const visible = ref(false);
 
     const toModify = (field: Field) => {
-      currentField.value = field
-      visible.value = true
+      currentField.value = field;
+      visible.value = true;
     }
+
+    const toActive = (field: Field) => {
+      currentField.value = field;
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && currentField.value) {
+        console.log(111)
+        fieldStore.deleteField(currentField.value.param)
+      }
+    })
+
     return {
       fieldStore,
       visible,
       toModify,
-      currentField
+      currentField,
+      toActive
     }
   }
 })
@@ -67,6 +80,7 @@ export default defineComponent({
     padding-left: 10px;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     .drag-icon {
       cursor: move;
@@ -80,6 +94,10 @@ export default defineComponent({
       position: absolute;
       right: 0;
     }
+  }
+
+  .active {
+    border-color: #1890ff;
   }
 }
 </style>

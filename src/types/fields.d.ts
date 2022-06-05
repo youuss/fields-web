@@ -23,7 +23,8 @@ type ColumnType = {
 
 interface Field {
   param?: string;
-  title?: string
+  title?: string;
+  status?: 'always' | 'current';
   search?: SearchType;
   column?: ColumnType
 }

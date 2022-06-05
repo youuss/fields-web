@@ -93,8 +93,9 @@ export default defineComponent({
 
     const onSubmit = () => {
       validate().then(() => {
-        fieldsStore.addFiled({
-          ...state.form
+        fieldsStore.addField({
+          ...state.form,
+          status: 'current'
         })
         resetFields()
       }).catch((e) => console.log(e))

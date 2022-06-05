@@ -6,44 +6,57 @@
       placement="right"
       @close="close"
   >
+    <a-descriptions title="基本内容" :column="2">
+      <a-descriptions-item label="字段">
+        <a-input size="small" style="width: 140px" v-model:value="field.param" disabled />
+      </a-descriptions-item>
+      <a-descriptions-item label="字段名称">
+        <a-input size="small" style="width: 140px" v-model:value="field.title" />
+      </a-descriptions-item>
+    </a-descriptions>
+    <a-divider />
     <a-descriptions title="搜索" :column="2">
       <template #extra>
         <a-switch v-model:checked="field.search.visible" />
       </template>
-      <a-descriptions-item label="搜索类型">
-        <a-select
-            style="width: 140px"
-            size="small"
-            :options="typeOptions"
-            v-model:value="field.search.type"
-        />
-      </a-descriptions-item>
-      <a-descriptions-item label="默认值">
-        <a-input size="small" style="width: 140px" v-model:value="field.search.default" />
-      </a-descriptions-item>
+      <template v-if="field.search.visible">
+        <a-descriptions-item label="搜索类型">
+          <a-select
+              style="width: 140px"
+              size="small"
+              :options="typeOptions"
+              v-model:value="field.search.type"
+          />
+        </a-descriptions-item>
+        <a-descriptions-item label="默认值">
+          <a-input size="small" style="width: 140px" v-model:value="field.search.default" />
+        </a-descriptions-item>
+      </template>
     </a-descriptions>
     <a-divider />
     <a-descriptions title="表格" :column="2">
       <template #extra>
         <a-switch v-model:checked="field.column.visible" />
       </template>
-      <a-descriptions-item label="对齐方式">
-        <a-select
-            style="width: 140px"
-            size="small"
-            :options="alignOptions"
-            v-model:value="field.column.align"
-        />
-      </a-descriptions-item>
-      <a-descriptions-item label="列宽">
-        <a-input-number style="width: 140px" size="small" v-model:value="field.column.width" />
-      </a-descriptions-item>
-      <a-descriptions-item label="是否自定义列">
-        <a-space>
-          <a-input size="small" style="width: 140px" v-if="customColumn" v-model:value="field.column.slot"/>
-          <a-switch v-model:checked="customColumn" />
-        </a-space>
-      </a-descriptions-item>
+      <template v-if="field.column.visible">
+        <a-descriptions-item label="对齐方式">
+          <a-select
+              style="width: 140px"
+              size="small"
+              :options="alignOptions"
+              v-model:value="field.column.align"
+          />
+        </a-descriptions-item>
+        <a-descriptions-item label="列宽">
+          <a-input-number style="width: 140px" size="small" v-model:value="field.column.width" />
+        </a-descriptions-item>
+        <a-descriptions-item label="是否自定义列">
+          <a-space>
+            <a-input size="small" style="width: 140px" v-if="customColumn" v-model:value="field.column.slot"/>
+            <a-switch v-model:checked="customColumn" />
+          </a-space>
+        </a-descriptions-item>
+      </template>
     </a-descriptions>
   </a-drawer>
 </template>

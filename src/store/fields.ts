@@ -13,6 +13,7 @@ export const useFieldsStore = defineStore('fieldsStore',{
       {
         title: '操作',
         param: 'action',
+        status: 'always',
         search: {
           visible: false,
         },
@@ -24,7 +25,7 @@ export const useFieldsStore = defineStore('fieldsStore',{
     ] as Field[]
   }),
   actions: {
-    addFiled(field: Field) {
+    addField(field: Field) {
       this.fields.splice(-1, 0, {
         ...field,
         search: {
@@ -34,6 +35,12 @@ export const useFieldsStore = defineStore('fieldsStore',{
           visible: true
         }
       })
+    },
+    deleteField(param?: string) {
+      const index = this.fields.findIndex(field => field.param === param && field.status !== 'always')
+      if (index > -1) {
+        this.fields.splice(index, 1)
+      }
     }
   },
   getters: {
