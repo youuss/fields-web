@@ -52,7 +52,6 @@ export default defineComponent({
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Backspace' && currentField.value) {
-        console.log(111)
         fieldStore.deleteField(currentField.value.param)
       }
     })

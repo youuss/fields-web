@@ -23,6 +23,7 @@
 import { Codemirror } from 'vue-codemirror'
 import { json } from '@codemirror/lang-json'
 import { oneDark } from '@codemirror/theme-one-dark'
+import useCore from '@/composables/useCore';
 
 export default defineComponent({
   name: 'FieldsCode',
@@ -30,79 +31,8 @@ export default defineComponent({
     Codemirror
   },
   setup() {
-    const code = ref(`${JSON.stringify({
-      id: {
-        title: '编号',
-      },
-      name: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name9: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name8: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name7: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name6: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name5: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name4: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name3: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name2: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      name1: {
-        title: '名称',
-        search: {
-          type: 'input'
-        }
-      },
-      action: {
-        title: '操作',
-        table: {
-          width: 200,
-          align: 'center',
-          fixed: 'right'
-        }
-      }
-    }, null, 2)}`)
+    const { schema } = useCore()
+    const code = ref(`${JSON.stringify(schema, null, 2)}`)
     const extensions = [json(), oneDark]
     return {
       code,
