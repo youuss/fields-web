@@ -2,14 +2,14 @@
   <Draggable
       class="field-list-container"
       v-model="fieldStore.fields"
-      item-key="param"
+      item-key="key"
   >
     <template #item="{element}">
-      <li class="field" :class="{'active': currentField && currentField.param === element.param }" @click="toActive(element)">
+      <li class="field" :class="{'active': currentField && currentField.key === element.key }" @click="toActive(element)">
         <span class="drag-icon">
           <HolderOutlined />
         </span>
-        {{element.title}}（{{element.param}}）
+        {{element.title}}（{{element.key}}）
         <a-button type="link" @click="toModify(element)">
           <EditFilled />
         </a-button>
@@ -52,7 +52,7 @@ export default defineComponent({
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Backspace' && currentField.value) {
-        fieldStore.deleteField(currentField.value.param)
+        fieldStore.deleteField(currentField.value.key)
       }
     })
 

@@ -9,22 +9,24 @@
 
 
 type SearchType = {
-  visible: boolean;
   type?: string;
   default?: string | number;
+  options?: { label: string, value: string | number }[]
 }
 
 type ColumnType = {
-  visible: boolean;
   width?: number;
-  align?: 'left' | 'center' | 'right',
-  fixed?: 'left' | 'right'
+  align?: 'left' | 'center' | 'right';
+  fixed?: 'left' | 'right';
+  _slot?: string;
 }
 
 interface Field {
-  param?: string;
+  key?: string;
   title?: string;
   status?: 'always' | 'current';
+  _isTableField?: boolean;
+  _isSearchField?: boolean;
   search?: SearchType;
   column?: ColumnType
 }

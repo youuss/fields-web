@@ -6,10 +6,10 @@
         :wrapperCol="{ span: 16 }"
       >
         <a-form-item
-            label="param"
-            v-bind="validateInfos.param"
+            label="key"
+            v-bind="validateInfos.key"
         >
-          <a-input v-model:value="form.param" />
+          <a-input v-model:value="form.key" />
         </a-form-item>
         <a-form-item
             label="title"
@@ -42,7 +42,7 @@ import { Rule } from 'ant-design-vue/es/form';
 
 interface StateProps {
   form: {
-    param?: string;
+    key?: string;
     title?: string;
   },
   rules?: FormProps['rules'];
@@ -55,7 +55,7 @@ export default defineComponent({
     const fieldsStore = useFieldsStore();
 
     const validateParam = (_rule: Rule, value: string) => {
-      const field = fieldsStore.fields.find((field) => field.param === value)
+      const field = fieldsStore.fields.find((field) => field.key === value)
       if (field) {
         return Promise.reject('请勿添加相同字段');
       }
@@ -70,7 +70,7 @@ export default defineComponent({
 
     const state = reactive<StateProps>({
       form: {
-        param: undefined,
+        key: undefined,
         title: undefined,
       },
       rules: {
@@ -80,7 +80,7 @@ export default defineComponent({
             message: '请输入字段名称',
           }
         ],
-        param: [
+        key: [
           {
             required: true,
             validator: validateParam,

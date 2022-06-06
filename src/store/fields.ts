@@ -12,14 +12,14 @@ export const useFieldsStore = defineStore('fieldsStore',{
     fields: [
       {
         title: '操作',
-        param: 'action',
+        key: 'action',
         status: 'always',
-        search: {
-          visible: false,
-        },
+        _isSearchField: false,
+        _isTableField: true,
+        search: {},
         column: {
-          visible: true,
-          fixed: 'right'
+          fixed: 'right',
+          _slot: 'action'
         }
       }
     ] as Field[]
@@ -28,16 +28,14 @@ export const useFieldsStore = defineStore('fieldsStore',{
     addField(field: Field) {
       this.fields.splice(-1, 0, {
         ...field,
-        search: {
-          visible: false,
-        },
-        column: {
-          visible: true
-        }
+        search: {},
+        column: {},
+        _isSearchField: false,
+        _isTableField: true,
       })
     },
-    deleteField(param?: string) {
-      const index = this.fields.findIndex(field => field.param === param && field.status !== 'always')
+    deleteField(key?: string) {
+      const index = this.fields.findIndex(field => field.key === key && field.status !== 'always')
       if (index > -1) {
         this.fields.splice(index, 1)
       }
@@ -45,9 +43,9 @@ export const useFieldsStore = defineStore('fieldsStore',{
   },
   getters: {
     columns: (state) => state.fields.map(field => ({
-      key: field.param,
+      key: field.key,
       title: field.title,
-      dataIndex: field.param,
+      dataIndex: field.key,
       ...field.column,
     }))
   }

@@ -29,6 +29,7 @@ declare module '@vue/runtime-core' {
     FieldsContainer: typeof import('./src/components/FieldsContainer.vue')['default']
     FieldsPreview: typeof import('./src/components/FieldsPreview.vue')['default']
     HolderOutlined: typeof import('@ant-design/icons-vue')['HolderOutlined']
+    PlusOutlined: typeof import('@ant-design/icons-vue')['PlusOutlined']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -8,9 +8,9 @@
  */
 import { useFieldsStore } from '@/store/fields';
 
-const ActionIgnoreParams = ['visible', 'status', 'search']
+const ActionIgnoreParams = ['status', 'search']
 
-const PrimaryIgnoreParams = ['visible', 'status']
+const PrimaryIgnoreParams = ['status']
 
 const travelObject = (obj: Record<string, any>, ignoreParams: string[]) => {
   for(let key in obj) {
@@ -43,12 +43,12 @@ export default function useCore() {
   
   const fields: Field[] = JSON.parse(JSON.stringify(fieldStore.fields));
   
-  const keys = fields.map(field => field.param)
+  const keys = fields.map(field => field.key)
   
   const schema = reactive<Record<string, any>>({})
   
   keys.forEach(key => {
-    const field = fields.find(f => f.param === key);
+    const field = fields.find(f => f.key === key);
     if (field) {
       schema[key as string] = useFieldFormat(field, key)
     }
