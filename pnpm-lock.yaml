@@ -1162,7 +1162,7 @@ packages:
     resolution: {integrity: sha1-d5+wAYYE+oVOrL9iUhgNg1Q+Pb4=, tarball: json5/download/json5-1.0.1.tgz}
     hasBin: true
     dependencies:
-      minimist: 1.2.6
+      minimist: registry.npmmirror.com/minimist/1.2.6
     dev: true
 
   /levn/0.4.1:
@@ -1481,10 +1481,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /sortablejs/1.14.0:
-    resolution: {integrity: sha1-bS4XzL2yX0ZHNN9iHU811Ks1s9g=, tarball: sortablejs/download/sortablejs-1.14.0.tgz}
-    dev: false
-
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=, tarball: sourcemap-codec/download/sourcemap-codec-1.4.8.tgz}
     dev: true
@@ -1669,7 +1665,7 @@ packages:
     peerDependencies:
       vue: ^3.0.1
     dependencies:
-      sortablejs: 1.14.0
+      sortablejs: registry.npmmirror.com/sortablejs/1.14.0
       vue: registry.npmmirror.com/vue/3.2.36
     dev: false
 
@@ -2032,9 +2028,9 @@ packages:
     dependencies:
       '@volar/code-gen': registry.npmmirror.com/@volar/code-gen/0.34.17
       '@volar/source-map': registry.npmmirror.com/@volar/source-map/0.34.17
-      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.36
-      '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom/3.2.36
-      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.36
+      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.37
+      '@vue/compiler-dom': registry.npmmirror.com/@vue/compiler-dom/3.2.37
+      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.37
     dev: true
 
   registry.npmmirror.com/@volar/vue-typescript/0.34.17:
@@ -2059,6 +2055,17 @@ packages:
       estree-walker: registry.npmmirror.com/estree-walker/2.0.2
       source-map: registry.npmmirror.com/source-map/0.6.1
 
+  registry.npmmirror.com/@vue/compiler-core/3.2.37:
+    resolution: {integrity: sha512-81KhEjo7YAOh0vQJoSmAD68wLfYqJvoiD4ulyedzF+OEk/bk6/hx3fTNVfuzugIIaTrOx4PGx6pAiBRe5e9Zmg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-core/-/compiler-core-3.2.37.tgz}
+    name: '@vue/compiler-core'
+    version: 3.2.37
+    dependencies:
+      '@babel/parser': registry.npmmirror.com/@babel/parser/7.18.4
+      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.37
+      estree-walker: registry.npmmirror.com/estree-walker/2.0.2
+      source-map: registry.npmmirror.com/source-map/0.6.1
+    dev: true
+
   registry.npmmirror.com/@vue/compiler-dom/3.2.36:
     resolution: {integrity: sha512-tcOTAOiW4s24QLnq+ON6J+GRONXJ+A/mqKCORi0LSlIh8XQlNnlm24y8xIL8la+ZDgkdbjarQ9ZqYSvEja6gVA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-dom/-/compiler-dom-3.2.36.tgz}
     name: '@vue/compiler-dom'
@@ -2066,6 +2073,15 @@ packages:
     dependencies:
       '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.36
       '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.36
+
+  registry.npmmirror.com/@vue/compiler-dom/3.2.37:
+    resolution: {integrity: sha512-yxJLH167fucHKxaqXpYk7x8z7mMEnXOw3G2q62FTkmsvNxu4FQSu5+3UMb+L7fjKa26DEzhrmCxAgFLLIzVfqQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-dom/-/compiler-dom-3.2.37.tgz}
+    name: '@vue/compiler-dom'
+    version: 3.2.37
+    dependencies:
+      '@vue/compiler-core': registry.npmmirror.com/@vue/compiler-core/3.2.37
+      '@vue/shared': registry.npmmirror.com/@vue/shared/3.2.37
+    dev: true
 
   registry.npmmirror.com/@vue/compiler-sfc/3.2.36:
     resolution: {integrity: sha512-AvGb4bTj4W8uQ4BqaSxo7UwTEqX5utdRSMyHy58OragWlt8nEACQ9mIeQh3K4di4/SX+41+pJrLIY01lHAOFOA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/compiler-sfc/-/compiler-sfc-3.2.36.tgz}
@@ -2148,6 +2164,12 @@ packages:
     resolution: {integrity: sha512-JtB41wXl7Au3+Nl3gD16Cfpj7k/6aCroZ6BbOiCMFCMvrOpkg/qQUXTso2XowaNqBbnkuGHurLAqkLBxNGc1hQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/shared/-/shared-3.2.36.tgz}
     name: '@vue/shared'
     version: 3.2.36
+
+  registry.npmmirror.com/@vue/shared/3.2.37:
+    resolution: {integrity: sha512-4rSJemR2NQIo9Klm1vabqWjD8rs/ZaJSzMxkMNeJS6lHiUjjUeYFbooN19NgFjztubEKh3WlZUeOLVdbbUWHsw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vue/shared/-/shared-3.2.37.tgz}
+    name: '@vue/shared'
+    version: 3.2.37
+    dev: true
 
   registry.npmmirror.com/add/2.0.6:
     resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/add/-/add-2.0.6.tgz}
@@ -2733,6 +2755,12 @@ packages:
       brace-expansion: registry.npmmirror.com/brace-expansion/2.0.1
     dev: true
 
+  registry.npmmirror.com/minimist/1.2.6:
+    resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/minimist/-/minimist-1.2.6.tgz}
+    name: minimist
+    version: 1.2.6
+    dev: true
+
   registry.npmmirror.com/ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/-/ms-2.1.2.tgz}
     name: ms
@@ -2895,6 +2923,12 @@ packages:
     resolution: {integrity: sha512-S4vJDjHHMBaiZuT9NPb616CSmLf618jawtv3sufLl6ivK8WocjAo58cXwbRV1cgqxH0Qbv+iUt6m05eqEa2IRA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/shallow-equal/-/shallow-equal-1.2.1.tgz}
     name: shallow-equal
     version: 1.2.1
+    dev: false
+
+  registry.npmmirror.com/sortablejs/1.14.0:
+    resolution: {integrity: sha512-pBXvQCs5/33fdN1/39pPL0NZF20LeRbLQ5jtnheIPN9JQAaufGjKdWduZn4U7wCtVuzKhmRkI0DFYHYRbB2H1w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/sortablejs/-/sortablejs-1.14.0.tgz}
+    name: sortablejs
+    version: 1.14.0
     dev: false
 
   registry.npmmirror.com/source-map-js/1.0.2:

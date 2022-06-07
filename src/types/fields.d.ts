@@ -11,7 +11,7 @@
 type SearchType = {
   type?: string;
   default?: string | number;
-  options?: { label: string, value: string | number }[]
+  options?: { label: string, value: string | number, _id: string, _type: 'string' | 'number', }[]
 }
 
 type ColumnType = {
