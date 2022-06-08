@@ -31,7 +31,7 @@ export default defineComponent({
     Codemirror
   },
   setup() {
-    const { schema } = useCore()
+    const { schema } = useCore('v2')
     const code = ref(`${JSON.stringify(schema, null, 2)}`)
     const extensions = [json(), oneDark]
     return {

@@ -14,8 +14,7 @@
         <a-input style="width: 140px" v-model:value="field.title" />
       </a-descriptions-item>
     </a-descriptions>
-    <a-divider />
-    <a-descriptions title="搜索" :column="2">
+    <a-descriptions title="搜索" :column="2" v-if="!['action'].includes(field.key)">
       <template #extra>
         <a-switch v-model:checked="field._isSearchField" />
       </template>
@@ -91,7 +90,6 @@
         </a-descriptions-item>
       </template>
     </a-descriptions>
-    <a-divider />
     <a-descriptions title="表格" :column="2">
       <template #extra>
         <a-switch v-model:checked="field._isTableField" />
@@ -109,7 +107,7 @@
         </a-descriptions-item>
         <a-descriptions-item label="是否自定义列" :labelStyle="{ alignItems: 'center' }">
           <a-space>
-            <a-input style="width: 140px" v-if="customColumn" v-model:value="field.column.slot"/>
+            <a-input style="width: 140px" v-if="customColumn" v-model:value="field.column._slot"/>
             <a-switch v-model:checked="customColumn" />
           </a-space>
         </a-descriptions-item>
