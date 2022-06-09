@@ -13,7 +13,7 @@ export const useFieldsStore = defineStore('fieldsStore',{
       {
         title: '操作',
         key: 'action',
-        status: 'always',
+        _status: 'always',
         _isSearchField: false,
         _isTableField: true,
         search: {},
@@ -35,7 +35,7 @@ export const useFieldsStore = defineStore('fieldsStore',{
       })
     },
     deleteField(key?: string) {
-      const index = this.fields.findIndex(field => field.key === key && field.status !== 'always')
+      const index = this.fields.findIndex(field => field.key === key && field._status !== 'always')
       if (index > -1) {
         this.fields.splice(index, 1)
       }

@@ -8,10 +8,6 @@
  */
 import { useFieldsStore } from '@/store/fields';
 
-const ActionIgnoreParams = ['status',]
-
-const PrimaryIgnoreParams = ['status']
-
 const ignoreRex = /^_/
 
 export default function useCore(version: string) {
@@ -46,22 +42,20 @@ export default function useCore(version: string) {
         }
       },
       _type: () => delete obj._type,
-      _id: () => delete obj._id
+      _id: () => delete obj._id,
+      _status: () => delete obj._status
     }
     customMap[key]();
   }
   
-  const travelObject = (obj: Record<string, any>, ignoreParams: string[]) => {
+  const travelObject = (obj: Record<string, any>) => {
     for(let key in obj) {
-      if (ignoreParams.includes(key)) {
-        delete obj[key]
-      }
       if (key.match(ignoreRex)) {
         customFormat(key, obj);
       }
       if (typeof obj[key] === 'object') {
         if (Object.keys(obj[key]).length > 1) {
-          travelObject(obj[key], ignoreParams)
+          travelObject(obj[key])
         } else {
           delete obj[key]
         }
@@ -71,19 +65,14 @@ export default function useCore(version: string) {
     return obj
   }
   
-  const fieldFormat = (field: Field, key?: string) => {
-    switch (key) {
-      case 'action' :
-        return travelObject(field, ActionIgnoreParams)
-      default :
-        return travelObject(field, PrimaryIgnoreParams)
-    }
+  const fieldFormat = (field: Field) => {
+    return travelObject(field)
   }
   
   keys.forEach(key => {
     const field = fields.find(f => f.key === key);
     if (field) {
-      schema[key as string] = fieldFormat(field, key)
+      schema[key as string] = fieldFormat(field)
     }
   })
   

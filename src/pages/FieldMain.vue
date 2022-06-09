@@ -95,7 +95,7 @@ export default defineComponent({
       validate().then(() => {
         fieldsStore.addField({
           ...state.form,
-          status: 'current'
+          _status: 'current'
         })
         resetFields()
       }).catch((e) => console.log(e))

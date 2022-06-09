@@ -24,7 +24,7 @@ type ColumnType = {
 interface Field {
   key?: string;
   title?: string;
-  status?: 'always' | 'current';
+  _status?: 'always' | 'current';
   _isTableField?: boolean;
   _isSearchField?: boolean;
   search?: SearchType;
