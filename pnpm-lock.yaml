@@ -12,6 +12,7 @@ specifiers:
   '@vue/eslint-config-typescript': ^10.0.0
   add: ^2.0.6
   ant-design-vue: ^3.2.5
+  dayjs: ^1.11.3
   eslint: ^8.15.0
   eslint-config-airbnb-base: ^15.0.0
   eslint-config-prettier: ^8.3.0
@@ -40,6 +41,7 @@ dependencies:
   '@codemirror/theme-one-dark': registry.npmmirror.com/@codemirror/theme-one-dark/0.20.0
   add: registry.npmmirror.com/add/2.0.6
   ant-design-vue: registry.npmmirror.com/ant-design-vue/3.2.5_vue@3.2.36
+  dayjs: registry.npmmirror.com/dayjs/1.11.3
   pinia: registry.npmmirror.com/pinia/2.0.14_qhv4oyzxhhzeba5rd2zztmcg2y
   vue: registry.npmmirror.com/vue/3.2.36
   vue-codemirror: registry.npmmirror.com/vue-codemirror/5.0.1_vue@3.2.36
@@ -2192,7 +2194,7 @@ packages:
       '@simonwep/pickr': registry.npmmirror.com/@simonwep/pickr/1.8.2
       array-tree-filter: registry.npmmirror.com/array-tree-filter/2.1.0
       async-validator: registry.npmmirror.com/async-validator/4.1.1
-      dayjs: registry.npmmirror.com/dayjs/1.11.2
+      dayjs: registry.npmmirror.com/dayjs/1.11.3
       dom-align: registry.npmmirror.com/dom-align/1.12.3
       dom-scroll-into-view: registry.npmmirror.com/dom-scroll-into-view/2.0.1
       lodash: registry.npmmirror.com/lodash/4.17.21
@@ -2298,10 +2300,10 @@ packages:
     name: csstype
     version: 2.6.20
 
-  registry.npmmirror.com/dayjs/1.11.2:
-    resolution: {integrity: sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.2.tgz}
+  registry.npmmirror.com/dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.3.tgz}
     name: dayjs
-    version: 1.11.2
+    version: 1.11.3
     dev: false
 
   registry.npmmirror.com/debug/4.3.4:
