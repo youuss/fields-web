@@ -1,21 +1,30 @@
 <template>
-  <Draggable
-      class="field-list-container"
-      v-model="fieldStore.fields"
-      item-key="key"
+  <div class="dragging"
+       ref="fieldsRef"
+       tabindex="1"
   >
-    <template #item="{element}">
-      <li class="field" :class="{'active': currentField && currentField.key === element.key }" @click="toActive(element)">
+    <Draggable
+        class="field-list-container"
+        v-model="fieldStore.fields"
+        item-key="key"
+    >
+      <template #item="{element}">
+        <li
+            class="field"
+            :class="{'active': currentField && currentField.key === element.key }"
+            @click="toActive(element)"
+        >
         <span class="drag-icon">
           <HolderOutlined />
         </span>
-        {{element.title}}（{{element.key}}）
-        <a-button type="link" @click="toModify(element)">
-          <EditFilled />
-        </a-button>
-      </li>
-    </template>
-  </Draggable>
+          {{element.title}}（{{element.key}}）
+          <a-button type="link" @click="toModify(element)">
+            <EditFilled />
+          </a-button>
+        </li>
+      </template>
+    </Draggable>
+  </div>
   <FieldDrawer v-model:visible="visible" :fieldInfo="currentField" />
 </template>
 
@@ -36,6 +45,7 @@ export default defineComponent({
   components: { Draggable },
   setup() {
     const fieldStore = useFieldsStore();
+    const fieldsRef = ref();
 
     const currentField = ref<Field>();
 
@@ -49,11 +59,12 @@ export default defineComponent({
     const toActive = (field: Field) => {
       currentField.value = field;
     }
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Backspace' && currentField.value) {
-        fieldStore.deleteField(currentField.value.key)
-      }
+    onMounted(() => {
+      fieldsRef.value.addEventListener('keydown', (e: any) => {
+        if (currentField.value) {
+          fieldStore.deleteField(currentField.value.key)
+        }
+      })
     })
 
     return {
@@ -61,42 +72,46 @@ export default defineComponent({
       visible,
       toModify,
       currentField,
-      toActive
+      toActive,
+      fieldsRef
     }
   }
 })
 </script>
 
 <style scoped lang="scss">
-.field-list-container {
-  .field {
-    position: relative;
-    line-height: 40px;
-    height: 40px;
-    border: 1px solid #e5e5e5;
-    margin: 5px;
-    border-radius: 5px;
-    padding-left: 10px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.dragging {
+  outline: 0;
+  .field-list-container {
+    .field {
+      position: relative;
+      line-height: 40px;
+      height: 40px;
+      border: 1px solid #e5e5e5;
+      margin: 5px;
+      border-radius: 5px;
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
 
-    .drag-icon {
-      cursor: move;
-      margin-right: 5px;
-      &:hover {
-        color: #1890ff;
+      .drag-icon {
+        cursor: move;
+        margin-right: 5px;
+        &:hover {
+          color: #1890ff;
+        }
+      }
+
+      .ant-btn {
+        position: absolute;
+        right: 0;
       }
     }
 
-    .ant-btn {
-      position: absolute;
-      right: 0;
+    .active {
+      border-color: #1890ff;
     }
-  }
-
-  .active {
-    border-color: #1890ff;
   }
 }
 </style>
