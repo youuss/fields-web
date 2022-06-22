@@ -1,4 +1,5 @@
 <template>
+  <Search />
   <a-table :columns="fieldStore.columns"/>
 </template>
 

@@ -27,7 +27,7 @@
           />
         </a-descriptions-item>
         <a-descriptions-item label="默认值" :labelStyle="{ alignItems: 'center' }">
-          <a-input style="width: 140px" v-model:value="field.search.default" />
+          <a-input style="width: 140px" v-model:value="field.search.defaultValue" />
         </a-descriptions-item>
         <a-descriptions-item
             v-if="['MultipleSelect', 'select'].includes(field.search.type)"

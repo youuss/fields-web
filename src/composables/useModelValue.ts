@@ -13,15 +13,19 @@ export default function useModelValue(defaultValue: Ref, type: string) {
   switch (type) {
     case 'input':
       return {
-        modelValue: defaultValue,
+        modelValue: ref(defaultValue.value),
       }
     case 'select':
       return {
-        modelValue: defaultValue,
+        modelValue: ref(defaultValue.value),
       }
     case 'date':
       return {
-        modelValue: dayjs(defaultValue.value),
+        modelValue: ref(dayjs(defaultValue.value)),
+      }
+    default:
+      return {
+        modelValue: ref(defaultValue.value),
       }
   }
 }

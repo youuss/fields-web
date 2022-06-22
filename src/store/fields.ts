@@ -39,14 +39,33 @@ export const useFieldsStore = defineStore('fieldsStore',{
       if (index > -1) {
         this.fields.splice(index, 1)
       }
-    }
+    },
   },
   getters: {
-    columns: (state) => state.fields.map(field => ({
-      key: field.key,
-      title: field.title,
-      dataIndex: field.key,
-      ...field.column,
-    }))
-  }
+    columns: (state) => state.fields
+      .filter(field => field._isTableField)
+      .map(field => ({
+        key: field.key,
+        title: field.title,
+        dataIndex: field.key,
+        defaultValue: undefined,
+        ...field.column,
+      })),
+    searchItems: (state) => {
+      return (lineCount: number) => {
+        const item = state.fields
+          .filter(field => field._isSearchField)
+          .map(field => ({
+            key: field.key,
+            title: field.title,
+            ...field.search
+          }))
+        let arr: any[] = [];
+        for (let i = 0; i < item.length / lineCount; i += 1) {
+          arr = arr.concat([item.slice(i * lineCount, (i + 1) * lineCount)]);
+        }
+        return arr
+      }
+    }
+  },
 })
